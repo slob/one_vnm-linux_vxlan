@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+$: << File.dirname(__FILE__)
+$: << File.join(File.dirname(__FILE__), "..")
+
+require 'LinuxVXLAN'
+
+lvx = LinuxVXLAN.from_base64(ARGV[0])
+lvx.deactivate
