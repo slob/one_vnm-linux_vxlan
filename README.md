@@ -1,4 +1,4 @@
-OpenNebula Linux VXLAN VNM
+## OpenNebula Linux VXLAN VNM
 
 Hacked together OpenNebula driver supporting VXLAN-based Virtual Networks.
 
@@ -17,16 +17,23 @@ CONF[:vxlan_transit_dev] - interface that you want to send VXLAN traffic over
 
 eg.
 
-  CONF = {
-      :start_vlan => 2,
-      :vxlan_start_vni => 1001,
-      :vxlan_transit_dev => "eth1.199"
-  }
-
+```
+CONF = {
+  :start_vlan => 2,
+  :vxlan_start_vni => 1001,
+  :vxlan_transit_dev => "eth1.199"
+}
+```
 
 Tested hypervisor setup:
 
- - debian wheezy
- - linux-image-amd64 3.10+51~bpo70+1 from backports
- - iproute2 3.11.0-1 compiled from source deb from jessie 
+ * debian wheezy
+ * linux-image-amd64 3.10+51~bpo70+1 from backports
+ * iproute2 3.11.0-1 compiled from source deb from jessie 
 
+sudoers config on hypervisor (/etc/sudoers.d/one_vnm-linux_vxlan):
+
+```
+oneadmin ALL=(ALL) NOPASSWD: /bin/ip *
+oneadmin ALL=(ALL) NOPASSWD: /sbin/brctl *
+```
